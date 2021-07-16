@@ -1,0 +1,11 @@
+.gradle
+.idea
+/build
+build.gradle.kts
+/gradle
+gradle.properties
+gradlew
+gradlew.bat
+settings.gradle.kts
+/src/test
+/src/main/resources
