@@ -13,10 +13,16 @@ fun solution(n:Int, lost:IntArray, reserve:IntArray):Int{
     reserve.forEach { arr[it]++ }
 
     for(i in 1 .. n){
-        if(arr[i] == 0 && arr[i - 1] == 2)
-            arr[i]++.also { arr[i-1]-- }
-        else if(arr[i] == 0 && arr[i + 1] == 2)
-            arr[i]++.also { arr[i + 1]-- }
+        if(arr[i] == 0 && arr[i - 1] == 2) {
+            arr[i]++
+            arr[i - 1]--
+        }
+        else if(arr[i] == 0 && arr[i + 1] == 2) {
+            arr[i]++
+            arr[i + 1]--
+        }else{
+            continue
+        }
     }
 
     for(i in 1 .. n)
@@ -26,7 +32,23 @@ fun solution(n:Int, lost:IntArray, reserve:IntArray):Int{
     return answer
 }
 
+fun bestSolution(n: Int, lost: IntArray, reserve: IntArray): Int{
+    var answer = n
+    val lostSet = lost.toSet() - reserve.toSet()
+    val reserveSet = (reserve.toSet() - lost.toSet()) as MutableSet
+
+    for(i in lostSet){
+        when{
+            i - 1 in reserveSet -> reserveSet.remove(i - 1)
+            i + 1 in reserveSet -> reserveSet.remove(i + 1)
+            else -> answer--
+        }
+    }
+    return answer
+}
+
 fun main(){
     println(5)
     println(solution(5, intArrayOf(2,4), intArrayOf(1,3,5)))
+    println(bestSolution(5, intArrayOf(2,4), intArrayOf(1,3,5)))
 }

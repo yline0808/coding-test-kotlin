@@ -1,0 +1,7 @@
+for (i in commands.indices) -> 인덱스 순서대로 i에 반환
+
+a.coerceAtMost(b)   -> 작은 수
+
+a.coerceAtLeast(b)  -> 큰 수
+
+reflection  -> a.filter(b::contains).map(::print) = a.filter { b.contains(it) }.map(::print)

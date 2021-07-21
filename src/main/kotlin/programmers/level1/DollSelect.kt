@@ -8,7 +8,7 @@ import java.util.Stack
  * 유형 : 2019카카오 개발자 겨울 인턴십
  */
 
-fun solution(board: Array<IntArray>, moves: IntArray):Int{
+private fun solution(board: Array<IntArray>, moves: IntArray):Int{
     var answer = 0
     val stack = Stack<Int>()
 
@@ -30,7 +30,7 @@ fun solution(board: Array<IntArray>, moves: IntArray):Int{
     return answer
 }
 
-fun main(){
+private fun main(){
     val board = arrayOf(
         intArrayOf( 0, 0, 0, 0, 0 ),
         intArrayOf( 0, 0, 1, 0, 3 ),

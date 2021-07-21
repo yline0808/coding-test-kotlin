@@ -19,7 +19,7 @@ package test
  *              = 같은 이름의 변수나 함수가 'scope 바깥'에 중복되어 있는 경우에 혼란을 방지하기 위해서
  */
 
-fun main(){
+private fun main(){
     var name = "자바"
     var price = 5000
 
@@ -49,7 +49,7 @@ fun main(){
     }
 }
 
-class Book(var name: String, var price: Int){
+private class Book(var name: String, var price: Int){
     fun discount(){
         price -= 2000
     }

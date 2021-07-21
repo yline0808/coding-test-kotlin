@@ -6,7 +6,7 @@ package programmers.level1
  * 유형 : Summer/Winter Coding(~2018)
  */
 
-fun solution(d: IntArray, budget:Int): Int{
+private fun solution(d: IntArray, budget:Int): Int{
     var answer = 0
 
     d.sort()
@@ -21,7 +21,7 @@ fun solution(d: IntArray, budget:Int): Int{
     return answer
 }
 
-fun main(){
+private fun main(){
     val d = intArrayOf(1, 3, 2, 5, 4)
 
     println(3)
