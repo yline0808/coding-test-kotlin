@@ -6,7 +6,7 @@ package programmers.level1
  * 유형 : 탐욕볍
  */
 
-fun solution(n:Int, lost:IntArray, reserve:IntArray):Int{
+private fun solution(n:Int, lost:IntArray, reserve:IntArray):Int{
     var answer = 0
     val arr = IntArray(n+2){1}     //시작 1부터, 끝 1개 오류방지, {1}하면 전부 1로
     lost.forEach { arr[it]-- }
@@ -32,7 +32,7 @@ fun solution(n:Int, lost:IntArray, reserve:IntArray):Int{
     return answer
 }
 
-fun bestSolution(n: Int, lost: IntArray, reserve: IntArray): Int{
+private fun bestSolution(n: Int, lost: IntArray, reserve: IntArray): Int{
     var answer = n
     val lostSet = lost.toSet() - reserve.toSet()
     val reserveSet = (reserve.toSet() - lost.toSet()) as MutableSet
@@ -47,7 +47,7 @@ fun bestSolution(n: Int, lost: IntArray, reserve: IntArray): Int{
     return answer
 }
 
-fun main(){
+private fun main(){
     println(5)
     println(solution(5, intArrayOf(2,4), intArrayOf(1,3,5)))
     println(bestSolution(5, intArrayOf(2,4), intArrayOf(1,3,5)))

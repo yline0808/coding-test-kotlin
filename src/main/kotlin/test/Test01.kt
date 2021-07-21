@@ -56,6 +56,19 @@ private fun reflection(){
     b.map(3::equals).map(::print)
 }
 
+private fun indicesTest(){
+    val a = intArrayOf(1,2,3,4,5)
+    for(i in a.indices - 2){
+        println(i)
+    }
+}
+
+private fun initTest(){
+    val a = "1"
+    println(String.format("%5s", a))
+    println("${"%5s".format(a)}")
+}
+
 private fun main(){
     println("---test when---")
     whenTest()
@@ -75,5 +88,13 @@ private fun main(){
 
     println("---test :: reflection---")
     reflection()
+    println("======")
+
+    println("---test indices---")
+    indicesTest()
+    println("======")
+
+    println("---test init array---")
+    initTest()
     println("======")
 }
