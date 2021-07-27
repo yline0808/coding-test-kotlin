@@ -69,6 +69,13 @@ private fun initTest(){
     println("${"%5s".format(a)}")
 }
 
+private fun swap(){
+    var a = 1
+    var b = 2
+    a = b.also { b = a }
+    println("${a}, ${b}")
+}
+
 private fun main(){
     println("---test when---")
     whenTest()
@@ -96,5 +103,9 @@ private fun main(){
 
     println("---test init array---")
     initTest()
+    println("======")
+
+    println("---test swap---")
+    swap()
     println("======")
 }
