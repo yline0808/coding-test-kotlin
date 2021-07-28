@@ -5,3 +5,8 @@ a.coerceAtMost(b)   -> 작은 수
 a.coerceAtLeast(b)  -> 큰 수
 
 reflection  -> a.filter(b::contains).map(::print) = a.filter { b.contains(it) }.map(::print)
+
+groupBy -> hashmap 관련
+
+reduce 초기값 없음 <> fold 초기값 있음
+
