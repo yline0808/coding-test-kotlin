@@ -116,59 +116,28 @@ private fun priorityQueueTest(){
     }
 }
 
+private fun toRegexTest(){
+    println("(0*)".toRegex())
+}
+
 private fun main(){
     var testNumber = 0
     Scanner(System.`in`).apply { testNumber = nextInt() }.close()
 
     when(testNumber){
         0 -> println("초기값 입니다.")
-
+        1 -> whenTest()
+        2 -> forEachTest()
+        3 -> mapTest()
+        4 -> coerceAtMostTest()
+        5 -> reflection()
+        6 -> indicesTest()
+        7 -> initTest()
+        8 -> swap()
+        9 -> cntTest()
+        10 -> compareTest()
+        11 -> priorityQueueTest()
+        12 -> toRegexTest()
         else -> println("해당 숫자가 없습니다.")
     }
-
-    println("---test when---")
-    whenTest()
-    println("======")
-
-    println("---test foreach---")
-    forEachTest()
-    println("======")
-
-    println("---test map---")
-    mapTest()
-    println("======")
-
-    println("---test coerceAtMost---")
-    coerceAtMostTest()
-    println("======")
-
-    println("---test :: reflection---")
-    reflection()
-    println("======")
-
-    println("---test indices---")
-    indicesTest()
-    println("======")
-
-    println("---test init array---")
-    initTest()
-    println("======")
-
-    println("---test swap---")
-    swap()
-    println("======")
-
-    println("---test cnt---")
-    cntTest()
-    println("======")
-
-    println("---test compare---")
-    compareTest()
-    println("======")
-
-    println("---test priorityQueue")
-    priorityQueueTest()
-    println("======")
-
-    println(testNumber)
 }
