@@ -120,8 +120,24 @@ private fun toRegexTest(){
     println("(0*)".toRegex())
 }
 
+private fun deepCopyTest(){
+    val a = intArrayOf(1,2,3,4,5)
+    val b = a
+    val c = a.copyOf()
+
+    a[0] = 999
+
+    a.forEach(::print)
+    println()
+    b.forEach(::print)
+    println()
+    c.forEach(::print)
+    println("\n결론 = 으로는 깊은 복사 안됨 copyOf() 사용해야 함")
+}
+
 private fun main(){
-    var testNumber = 0
+    var testNumber:Int
+    print("input number : ")
     Scanner(System.`in`).apply { testNumber = nextInt() }.close()
 
     when(testNumber){
@@ -138,6 +154,7 @@ private fun main(){
         10 -> compareTest()
         11 -> priorityQueueTest()
         12 -> toRegexTest()
+        13 -> deepCopyTest()
         else -> println("해당 숫자가 없습니다.")
     }
 }
