@@ -135,6 +135,8 @@ private fun deepCopyTest(){
     println("\n결론 = 으로는 깊은 복사 안됨 copyOf() 사용해야 함")
 }
 
+
+
 private fun main(){
     var testNumber:Int
     print("input number : ")
