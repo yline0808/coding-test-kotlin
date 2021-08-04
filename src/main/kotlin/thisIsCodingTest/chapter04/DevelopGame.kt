@@ -20,14 +20,13 @@ private fun solution(n:Int, m:Int, user:IntArray, arr:Array<IntArray>):Int{
     var y = user[1]
     var direction = user[2]
     var turnCnt = 0
-//    val map = Array<IntArray>(arr.size){ arr[it].copyOf() }
     arr[y][x] = 2
 
     while(true){
         direction = turnLeft(direction)
         var nx = x + dx[direction]
         var ny = y + dy[direction]
-        if(arr[y][x] == 0){
+        if(arr[ny][nx] == 0){
             x = nx
             y = ny
             arr[y][x] = 2
