@@ -1,11 +1,15 @@
 package thisIsCodingTest.chapter08
 
 private fun solution(n:Int, m:Int, arr:IntArray):Int{
-    var answer = 0
+    val d = IntArray(m + 1){10001}.apply{this[0] = 0}
 
+    for(i in arr){
+        for(j in i..m){
+            if(d[j] - i != 10001) d[j] = d[j].coerceAtMost(d[j - i] + 1)
+        }
+    }
 
-
-    return answer
+    return if(d[m] == 10001) -1 else d[m]
 }
 
 private fun main(){
