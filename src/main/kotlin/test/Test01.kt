@@ -135,7 +135,24 @@ private fun deepCopyTest(){
     println("\n결론 = 으로는 깊은 복사 안됨 copyOf() 사용해야 함")
 }
 
+private fun nullTest(){
+    val a = intArrayOf(1,2,3,4,5)
+    val b = intArrayOf(5,1,2,3,5)
+    val c = intArrayOf(5,5,5,5,5)
+    val d = intArrayOf()
 
+    println(a.maxOrNull())
+    println(b.maxOrNull())
+    println(c.maxOrNull())
+    println(d.maxOrNull())
+
+    val result1:Int = d.maxOrNull() ?: -1
+    println(result1)
+
+//    실행시 오류
+//    val result2:Int = d.maxOrNull()!!
+//    println(result2)
+}
 
 private fun main(){
     var testNumber:Int
@@ -157,6 +174,7 @@ private fun main(){
         11 -> priorityQueueTest()
         12 -> toRegexTest()
         13 -> deepCopyTest()
+        14 -> nullTest()
         else -> println("해당 숫자가 없습니다.")
     }
 }

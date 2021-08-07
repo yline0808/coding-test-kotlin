@@ -56,25 +56,21 @@ private fun dijkstra1(n:Int, l:Int, start:Int, arr:Array<IntArray>):IntArray{
 // 우선순위 큐 사용 (이거로 외워)
 private fun dijkstra2(n:Int, l:Int, start:Int, arr:Array<IntArray>):IntArray{
     data class Node(val index:Int, val distance:Int):Comparable<Node>{
-        override fun toString():String{
-            return "[${this.index}] : ${this.distance}\t"
-        }
-
-        override fun compareTo(other: Node): Int {
+        override fun compareTo(other:Node):Int{
             return this.distance - other.distance
         }
     }
 
-    val answer = IntArray(n + 1){INF}.apply { this[start] = 0 }
-    val pq = PriorityQueue<Node>().apply{ offer(Node(start, 0)) }
-    val graph = MutableList<MutableList<Node>>(n + 1){ mutableListOf() }.apply {
-        arr.forEach { this[it[0]].add(Node(it[1], it[2])) }
+    val answer = IntArray(n + 1){1e9.toInt()}.apply { this[start] = 0 }
+    val pq = PriorityQueue<Node>().apply { offer(Node(start, 0)) }
+    val graph = MutableList<MutableList<Node>>(n + 1){ mutableListOf()}.apply{
+        arr.forEach{ this[it[0]].add(Node(it[1], it[2])) }
     }
 
     while(pq.isNotEmpty()){
         val node = pq.poll()
         if(answer[node.index] < node.distance) continue
-        for(nextNode in graph[node.index]) {
+        for(nextNode in graph[node.index]){
             val cost = answer[node.index] + nextNode.distance
             if(cost < answer[nextNode.index]){
                 answer[nextNode.index] = cost
