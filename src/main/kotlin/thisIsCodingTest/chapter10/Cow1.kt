@@ -13,9 +13,9 @@ private fun findParent(x:Int):Int{
 }
 
 private fun unionParent(a:Int, b:Int){
-    val a = findParent(a)
-    val b = findParent(b)
-    if(a < b) parent[b] = a else parent[a] = b
+    val ap = findParent(a)
+    val bp = findParent(b)
+    if(ap < bp) parent[bp] = ap else parent[ap] = bp
 }
 
 private fun solution(n:Int, v:Int, arr:Array<IntArray>){
