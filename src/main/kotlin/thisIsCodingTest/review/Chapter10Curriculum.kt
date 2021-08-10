@@ -1,15 +1,13 @@
-package thisIsCodingTest.chapter10
+package thisIsCodingTest.review
 
 import java.util.Queue
 import java.util.LinkedList
 
-// 위상정렬
-
 private fun solution(n:Int, arr:Array<IntArray>):IntArray{
-    val indegree = IntArray(n + 1)
     val times = IntArray(n + 1)
-    val graph = Array<MutableList<Int>>(n + 1){ mutableListOf() }.apply {
-        arr.forEachIndexed{ idx, row ->
+    val indegree = IntArray(n + 1)
+    val graph = Array<MutableList<Int>>(n + 1){mutableListOf()}.apply{
+        arr.forEachIndexed { idx, row ->
             times[idx + 1] = row[0]
             for(j in 1 until row.size){
                 indegree[idx + 1]++
@@ -17,10 +15,11 @@ private fun solution(n:Int, arr:Array<IntArray>):IntArray{
             }
         }
     }
-    val answer = IntArray(n + 1){times[it]}
-    val q:Queue<Int> = LinkedList<Int>().apply {
+
+    val q:Queue<Int> = LinkedList<Int>().apply{
         indegree.forEachIndexed{ idx, item -> if(item == 0 && idx != 0) offer(idx) }
     }
+    val answer = IntArray(n + 1){ times[it] }
 
     while(q.isNotEmpty()){
         val now = q.poll()
