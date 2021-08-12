@@ -1,33 +1,52 @@
 package thisIsCodingTest.chapter11
 
-private fun solution(foodTimes:IntArray, k:Int):Int{
-    var s = 0
-    val arr:MutableList<Int> = foodTimes.toMutableList()
+/*
+ * 참고 : https://www.youtube.com/watch?v=4MWxAt4fx5I
+ * 타입 Int가 아니라 Long으로 해야 효율성 2번 통과됨
+ */
 
-    while(s <= k){
-        if(arr[s % arr.size] == 0) arr.removeAt(s % arr.size)
-        arr[s % arr.size]--
-        s++
-    }
-
-    return s % foodTimes.size + 1
-}
-
-private fun bookSolution(foodTimes:IntArray, k:Int):Int{
-    data class Food(val time:Int, val index:Int):Comparable<Food>{
+private fun solution(foodTimes:IntArray, kk:Int):Int{
+    data class Food(val time:Int, val idx:Int):Comparable<Food>{
         override fun compareTo(other:Food):Int{
-            return this.time - other.time
+            return this.time.compareTo(other.time)
         }
     }
 
-    var answer = 0
+    val foods = mutableListOf<Food>().apply {
+        foodTimes.forEachIndexed{ idx, item -> add(Food(item, idx + 1)) }
+        sort()
+    }
+    var n = foodTimes.size
+    var pretime = 0
+    var k = kk.toLong()
+    for((i, f) in foods.withIndex()){
+        val diff:Long = (f.time - pretime).toLong()
+        if(diff != 0L){
+            val spend:Long = diff * n
+            if(spend <= k){
+                k -= spend
+                pretime = f.time
+            }else{
+                k %= n
+                foods.subList(i, foodTimes.size).sortBy { food -> food.idx }
+                return foods[i + k.toInt()].idx
+            }
+        }
+        n--
+    }
 
-    return answer
+    return -1
 }
 
 private fun main(){
     println("1\n${solution(intArrayOf(3,1,2), 5)}")
-    println("1\n${bookSolution(intArrayOf(3,1,2), 5)}")
     println("4\n${solution(intArrayOf(3,4,1,2,5), 7)}")
-    println("4\n${bookSolution(intArrayOf(3,4,1,2,5), 7)}")
+
+    println("\n==========\n23451245125255-1-1")
+    var start = System.currentTimeMillis()
+    for(i in 1..13){
+        print("${solution(intArrayOf(3,4,1,2,5), i)}")
+    }
+    var end = System.currentTimeMillis()
+    println("\n====${end - start}=====")
 }

@@ -154,6 +154,17 @@ private fun nullTest(){
 //    println(result2)
 }
 
+private fun subListTest(){
+    val arr1 = mutableListOf<Int>(1,2,3,4,5)
+    val arr2 = arr1.subList(1,3)
+    val arr3 = arr1.slice(1..3)
+
+//    slice 는 깊은 복사 되는 느낌
+//    subList 는 그냥 잘라서 잠시 보는 용도
+    println(arr2)
+    println(arr3)
+}
+
 private fun main(){
     var testNumber:Int
     print("input number : ")
@@ -175,6 +186,7 @@ private fun main(){
         12 -> toRegexTest()
         13 -> deepCopyTest()
         14 -> nullTest()
+        15 -> subListTest()
         else -> println("해당 숫자가 없습니다.")
     }
 }
