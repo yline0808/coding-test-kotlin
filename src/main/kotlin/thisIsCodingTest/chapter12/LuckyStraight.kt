@@ -5,7 +5,6 @@ private fun solution(n:Int):String{
     var num1 = 0
     var num2 = 0
 
-
     for(i in str.indices){
         if(i < str.length / 2){
             num1 += str[i].toString().toInt()

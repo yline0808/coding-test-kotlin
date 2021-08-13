@@ -1,4 +1,4 @@
-package thisIsCodingTest.chapter12
+package thisIsCodingTest.review
 
 import java.util.Queue
 import java.util.LinkedList
@@ -14,35 +14,35 @@ import java.util.LinkedList
  * 0  1  2  3
  */
 
-private fun turnSnake(direction:Int, c:Char) = if(c == 'L') (direction + 3) % 4 else (direction + 1) % 4
+private data class Node(val direction:Int, val time:Int)
+
+private data class Position(val x:Int, val y:Int)
+
+private fun turnSnake(d:Int, c:Char) = if(c == 'L') (d + 3) % 4 else (d + 1) % 4
 
 private fun solution(n:Int, k:Int, appleLoc:Array<IntArray>, l:Int, xld:Array<Pair<Int, Char>>):Int{
-    data class Node(val time:Int, val direction:Int)
-    data class Position(val x:Int, val y:Int)
-
+    var time = 0
+    var idx = 0
+    var direction = 0
     var x = 1
     var y = 1
-    var direction = 0
-    var idx = 0
-    var time = 0
-    val dx = intArrayOf(1, 0, -1, 0)
-    val dy = intArrayOf(0, 1, 0, -1)
-    val map = Array<IntArray>(n + 1){IntArray(n + 1)}.apply{
-        appleLoc.forEach { this[it[0]][it[1]] = 1 }
+    val dx = intArrayOf(1,0,-1,0)
+    val dy = intArrayOf(0,1,0,-1)
+    val map = Array<IntArray>(n + 1){ IntArray(n + 1) }.apply {
+        appleLoc.forEach{ this[it[0]][it[1]] = 1 }
         this[y][x] = 2
     }
+    val q:Queue<Position> = LinkedList<Position>().apply{ offer(Position(x, y)) }
     val info = Array<Node>(l){
-        direction = turnSnake(direction, xld[it].second)
-        Node(xld[it].first, direction)
+        direction = turnSnake( direction, xld[it].second )
+        Node(direction, xld[it].first)
     }
-    val q:Queue<Position> = LinkedList<Position>().apply{ offer(Position(x,y)) }
 
-//    초기화
     direction = 0
 
     while(true){
-        var nx = x + dx[direction]
-        var ny = y + dy[direction]
+        val nx = x + dx[direction]
+        val ny = y + dy[direction]
 
         if(nx in 1..n && ny in 1..n && map[ny][nx] != 2){
             if(map[ny][nx] == 0){
@@ -62,7 +62,7 @@ private fun solution(n:Int, k:Int, appleLoc:Array<IntArray>, l:Int, xld:Array<Pa
         x = nx
         y = ny
         time++
-        if(idx < l && time == info[idx].time){
+        if(idx < l && info[idx].time == time){
             direction = info[idx++].direction
         }
     }
@@ -87,6 +87,12 @@ private fun main(){
     val resultList = intArrayOf(9,21,13)
 
     for(i in 0..2){
-        println("${resultList[i]}\n${solution(nList[i],kList[i],appleLocList[i],lList[i],xldList[i])}\n")
+        println("${resultList[i]}\n${
+            solution(nList[i],
+                kList[i],
+                appleLocList[i],
+                lList[i],
+                xldList[i])
+        }\n")
     }
 }
