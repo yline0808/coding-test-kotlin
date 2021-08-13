@@ -165,6 +165,20 @@ private fun subListTest(){
     println(arr3)
 }
 
+private fun capitalizeTest(){
+    val arr1 = arrayOf("test1", "test2", "test3")
+    val arr2 = arrayOf("TTest1", "Ttest2", "tTest3")
+    val arr3 = arrayOf("1test1", "2test2", "3test3")
+
+    arr1.forEach { it.capitalize() }
+    arr2.forEach { it.capitalize() }
+    arr3.forEach { it.capitalize() }
+
+    for(i in arr1.indices){
+        println("${arr1[i].capitalize()}, ${arr2[i].decapitalize()}, ${arr3[i].capitalize()}")
+    }
+}
+
 private fun main(){
     var testNumber:Int
     print("input number : ")
@@ -187,6 +201,7 @@ private fun main(){
         13 -> deepCopyTest()
         14 -> nullTest()
         15 -> subListTest()
+        16 -> capitalizeTest()
         else -> println("해당 숫자가 없습니다.")
     }
 }

@@ -1,7 +1,5 @@
 package programmers.level2
 
-import java.util.*
-
 /*
  * 문제 : JadenCase 문자열 만들기
  * url : https://programmers.co.kr/learn/courses/30/lessons/12951
@@ -9,7 +7,7 @@ import java.util.*
  */
 
 private fun solution(s:String): String{
-    return s.lowercase(Locale.getDefault()).split(' ').joinToString(" "){it.capitalize()}
+    return s.lowercase().split(' ').joinToString(" "){it.capitalize()}
 }
 
 private fun main(){
