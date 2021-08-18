@@ -20,6 +20,12 @@ private fun whenTest(){
 
 private fun forEachTest(){
     (0..9).forEach { print(it) }
+
+    (0..9).forEach{
+        if(it == 5){
+            return@forEach
+        }
+    }
 }
 
 private fun mapTest(){
@@ -179,6 +185,19 @@ private fun capitalizeTest(){
     }
 }
 
+private fun arrCntTest(){
+    val a = intArrayOf(1,1,1,1,2,3,4,5)
+
+    println(a.count{ it == 1 })
+}
+
+private fun stringIsDigit(){
+    val a = "123a"
+    println(a.all{ it.isDigit() })
+    val b = "123"
+    println(b.all{it.isDigit()})
+}
+
 private fun main(){
     var testNumber:Int
     print("input number : ")
@@ -202,6 +221,8 @@ private fun main(){
         14 -> nullTest()
         15 -> subListTest()
         16 -> capitalizeTest()
+        17 -> arrCntTest()
+        18 -> stringIsDigit()
         else -> println("해당 숫자가 없습니다.")
     }
 }
