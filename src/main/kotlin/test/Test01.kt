@@ -198,6 +198,12 @@ private fun stringIsDigit(){
     println(b.all{it.isDigit()})
 }
 
+private fun filterIndexedTest(){
+    val a = intArrayOf(1,2,3,4,5,6)
+    val b = a.filterIndexed { idx, i -> idx % 2 == 0 }.count()
+    println(b)
+}
+
 private fun main(){
     var testNumber:Int
     print("input number : ")
@@ -223,6 +229,7 @@ private fun main(){
         16 -> capitalizeTest()
         17 -> arrCntTest()
         18 -> stringIsDigit()
+        19 -> filterIndexedTest()
         else -> println("해당 숫자가 없습니다.")
     }
 }

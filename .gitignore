@@ -9,3 +9,4 @@ gradlew.bat
 settings.gradle.kts
 /src/test
 /src/main/resources
+/src/main/kotlin/test/Test.kt
