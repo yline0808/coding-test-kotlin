@@ -204,6 +204,23 @@ private fun filterIndexedTest(){
     println(b)
 }
 
+private fun toLowerUpperTest(){
+    val a = "TESTe"
+    var b = false
+    a.toLowerCase().apply { b = this.count { it == 't' } == this.count{it == 'e'}}
+    println(b)
+}
+
+private fun hashCodeTest(){
+    val str = "teststring!!!"
+    val str0 = "teststring!!!"
+    val str1 = "dd"
+    val str2 = "d"
+    println("${str} : ${str.hashCode().toLong()} : ${str0.hashCode().toLong()}")
+    println("${str1} : ${str1.hashCode().toLong()}")
+    println("${str2} : ${str2.hashCode().toLong()}")
+}
+
 private fun main(){
     var testNumber:Int
     print("input number : ")
@@ -230,6 +247,8 @@ private fun main(){
         17 -> arrCntTest()
         18 -> stringIsDigit()
         19 -> filterIndexedTest()
+        20 -> toLowerUpperTest()
+        21 -> hashCodeTest()
         else -> println("해당 숫자가 없습니다.")
     }
 }
